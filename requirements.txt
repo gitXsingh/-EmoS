@@ -5,4 +5,5 @@ numpy>=1.26.0,<2
 matplotlib==3.7.2
 seaborn==0.12.2
 plotly==5.17.0
-pickle-mixin==1.0.2 
+pickle-mixin==1.0.2
+Flask==3.0.3 
