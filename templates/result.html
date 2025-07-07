@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Prediction Result{% endblock %}
+
+{% block content %}
+<div class="bubble">
+    <h3>Prediction Result</h3>
+    <p><b>Risk Level:</b> <span class="{{ 'risk-high' if risk == 'HIGH RISK' else 'risk-low' }}">{{ risk }}</span></p>
+    <p class="wellness-score"><b>Wellness Score:</b> {{ wellness_score }}/100</p>
+    <p><b>Personalized Recommendations:</b></p>
+    <ul style="margin-top: 0;">
+    {% for rec in recommendations %}<li>{{ rec }}</li>{% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</div>
+{% endblock %} 

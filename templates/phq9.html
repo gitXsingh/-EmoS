@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}PHQ-9 Depression Quiz{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>PHQ-9 Depression Screening</h2>
+    <form method="post" action="/phq9">
+    {% for q in questions %}
+        <label>{{ loop.index }}. {{ q }}<br>
+            <select name="q{{ loop.index0 }}">
+                {% for opt in options %}
+                    <option value="{{ loop.index0 }}">{{ opt }}</option>
+                {% endfor %}
+            </select>
+        </label><br><br>
+    {% endfor %}
+        <input type="submit" value="Get PHQ-9 Score">
+    </form>
+    {% if result %}
+        <div class="bubble">
+            <h3>PHQ-9 Score: {{ result['score'] }}/27</h3>
+            <p>Severity: {{ result['severity'] }}</p>
+            <ul>
+            {% for rec in result['recommendations'] %}<li>{{ rec }}</li>{% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <a href="/">Back to Home</a>
+</div>
+{% endblock %} 

@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <title>{% block title %}Mental Health Risk Prediction{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="emos-topbar">
+        <div class="emos-topbar-inner">
+            <a href="/" class="emos-logo" style="text-decoration:none; cursor:pointer;">EmoS</a>
+            <div class="dark-toggle">
+                <button id="darkBtn" class="toggle-btn" onclick="toggleDarkMode()">🌙</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 
