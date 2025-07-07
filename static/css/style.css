@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+html, body {
+  background: #f9f7f3 !important;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  color: #232324;
+  min-height: 100vh;
+  margin: 0 !important;
+  font-size: 1.18em;
+  line-height: 1.8;
+  letter-spacing: -0.01em;
+  transition: background 0.5s, color 0.5s;
+  padding: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  overflow-x: hidden;
+}
+
+body {
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  background: #f9f7f3 !important;
+  overflow-x: hidden;
+}
+
+.emos-topbar {
+  width: 100vw;
+  left: 0;
+  top: 0;
+  position: fixed;
+  z-index: 100;
+  background: #f9f7f3 !important;
+  backdrop-filter: blur(12px);
+  box-shadow: none !important;
+  border: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 68px;
+  font-size: 1.45em;
+  font-weight: 700;
+  color: #232324;
+  letter-spacing: -0.5px;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.emos-topbar-inner {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  height: 68px;
+  padding: 0 32px;
+}
+
+.emos-logo {
+  color: #ff9900;
+  font-weight: 800;
+  font-size: 1.05em;
+  letter-spacing: 0.5px;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  text-shadow: 0 2px 8px #ffb30022;
+  margin: 0;
+  position: static;
+  text-align: left;
+  pointer-events: auto;
+}
+
+.dark-toggle {
+  position: static;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 2;
+}
+
+.toggle-btn {
+  background: #fff8e1;
+  color: #ff9900;
+  border: 1.5px solid #ff9900;
+  border-radius: 22px;
+  padding: 0 4px;
+  cursor: pointer;
+  font-size: 0.85em;
+  margin: 0;
+  transition: background 0.3s, color 0.3s, border 0.3s;
+  font-weight: 700;
+  box-shadow: 0 1px 4px #ffb30011;
+  outline: none;
+  letter-spacing: 0.1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.toggle-btn:hover {
+  background: #ff9900;
+  color: #fff;
+  border: 1.5px solid #ff9900;
+}
+
+/* Dark mode styles */
+body.dark-mode, body.dark-mode html {
+  background: #232324 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+body.dark-mode .emos-topbar {
+  background: #232324 !important;
+  color: #ffd580;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+body.dark-mode .emos-logo {
+  color: #ffd580;
+  text-shadow: 0 2px 8px #ffb30022;
+}
+
+body.dark-mode .toggle-btn {
+  background: #35363a;
+  color: #ffd580;
+  border: 1.5px solid #ffd580;
+}
+
+body.dark-mode .toggle-btn:hover {
+  background: #ffd580;
+  color: #232324;
+  border: 1.5px solid #ffd580;
+}
+
+body.dark-mode .card {
+  background: #232324;
+  color: #f9f6f2;
+  border: 1.5px solid #35363a;
+  box-shadow: 0 4px 32px 0 #23232433;
+}
+
+body.dark-mode label {
+  color: #f9f6f2;
+}
+
+body.dark-mode input, body.dark-mode select {
+  background: #18181a;
+  color: #f9f6f2;
+  border: 1.5px solid #35363a;
+}
+
+body.dark-mode input:focus, body.dark-mode select:focus {
+  border: 1.5px solid #ffd580;
+}
+
+body.dark-mode input[type=submit] {
+  background: #ffd580;
+  color: #232324;
+}
+
+body.dark-mode input[type=submit]:hover {
+  background: #ffb300;
+  color: #fff;
+}
+
+body.dark-mode h2, body.dark-mode .card h2 {
+  color: #f9f6f2 !important;
+}
+
+.container {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 0 12px;
+  margin-top: 96px !important;
+  margin-bottom: 0 !important;
+}
+
+body.dark-mode .container {
+  margin-top: 96px;
+}
+
+body.dark-mode .emos-topbar {
+  border-bottom: none;
+}
+
+.card, .bubble {
+  background: #fff;
+  border-radius: 22px;
+  border: 1.5px solid #f3e7d7;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.04);
+  padding: 36px 28px;
+  margin-bottom: 32px;
+}
+
+.bubble {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  background: #fff8e1;
+  border: 1.5px solid #ffb300;
+  color: #232324;
+  font-size: 1.12em;
+  font-weight: 600;
+  position: relative;
+}
+
+.bubble:before {
+  content: '';
+  position: absolute;
+  left: 32px;
+  top: -16px;
+  width: 24px;
+  height: 24px;
+  background: #fff8e1;
+  border-left: 1.5px solid #ffb300;
+  border-top: 1.5px solid #ffb300;
+  border-radius: 8px 0 0 0;
+  transform: rotate(-45deg);
+  z-index: 0;
+}
+
+body.dark-mode .bubble {
+  background: #35363a;
+  color: #f9f6f2;
+  border: 1.5px solid #ffd580;
+}
+
+body.dark-mode .bubble:before {
+  background: #35363a;
+  border-left: 1.5px solid #ffd580;
+  border-top: 1.5px solid #ffd580;
+}
+
+body.dark-mode .bubble a {
+  color: #ffd580;
+}
+
+body.dark-mode .bubble .wellness-score {
+  color: #ffd580;
+}
+
+body.dark-mode .bubble .risk-low {
+  color: #2ecc71;
+}
+
+body.dark-mode .bubble .risk-high {
+  color: #d7263d;
+}
+
+h2, h3 {
+  color: #232324;
+  text-align: left;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 18px;
+  margin-top: 0;
+  font-size: 1.45em;
+  line-height: 1.25;
+}
+
+label {
+  display: block;
+  margin: 18px 0 8px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+input, select {
+  width: 100%;
+  padding: 15px;
+  border-radius: 14px;
+  border: 1.5px solid #f3e7d7;
+  margin-bottom: 20px;
+  background: #f9f7f3;
+  font-size: 1em;
+  font-family: inherit;
+  color: #232324;
+  box-sizing: border-box;
+  outline: none;
+  transition: border 0.2s;
+  font-weight: 500;
+}
+
+input:focus, select:focus {
+  border: 1.5px solid #ff9900;
+}
+
+input[type=submit] {
+  background: #ff9900;
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: 0 2px 8px #ffb30022;
+  letter-spacing: 0.2px;
+  font-size: 1.13em;
+  border-radius: 14px;
+  margin-top: 8px;
+}
+
+input[type=submit]:hover {
+  background: #ffb300;
+}
+
+.risk-high { color: #d7263d; font-weight: bold; }
+.risk-low { color: #2ecc71; font-weight: bold; }
+.wellness-score { font-size: 1.2em; color: #ff9900; font-weight: 700; }
+a { color: #ff9900; text-decoration: none; font-weight: 600; }
+a:hover { text-decoration: underline; color: #ffb300; }
+
+body.dark-mode .bubble,
+body.dark-mode .bubble h3,
+body.dark-mode .bubble p,
+body.dark-mode .bubble ul,
+body.dark-mode .bubble li,
+body.dark-mode .bubble strong,
+body.dark-mode .bubble b {
+  color: #f9f6f2 !important;
+} 
