@@ -10,20 +10,27 @@ BASE_STYLE = '''
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   html, body {
-    background: #f9f7f3;
+    background: #f9f7f3 !important;
     font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
     color: #232324;
     min-height: 100vh;
-    margin: 0;
+    margin: 0 !important;
     font-size: 1.18em;
     line-height: 1.8;
     letter-spacing: -0.01em;
     transition: background 0.5s, color 0.5s;
-    padding: 0;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    overflow-x: hidden;
   }
   body {
-    padding: 0;
-    margin: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #f9f7f3 !important;
+    overflow-x: hidden;
   }
   .emos-topbar {
     width: 100vw;
@@ -31,10 +38,10 @@ BASE_STYLE = '''
     top: 0;
     position: fixed;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.65);
+    background: #f9f7f3 !important;
     backdrop-filter: blur(12px);
-    box-shadow: 0 2px 16px 0 rgba(0,0,0,0.04);
-    border-bottom: 1.5px solid #ffe3b3;
+    box-shadow: none !important;
+    border: none !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,9 +50,8 @@ BASE_STYLE = '''
     font-weight: 700;
     color: #232324;
     letter-spacing: -0.5px;
-    margin: 0;
-    padding: 0;
-    position: fixed;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   .emos-topbar-inner {
     width: 100%;
@@ -103,14 +109,16 @@ BASE_STYLE = '''
     border: 1.5px solid #ff9900;
   }
   /* Dark mode styles */
-  body.dark-mode {
-    background: #232324;
-    color: #f9f6f2;
+  body.dark-mode, body.dark-mode html {
+    background: #232324 !important;
+    box-shadow: none !important;
+    border: none !important;
   }
   body.dark-mode .emos-topbar {
-    background: rgba(35,35,36,0.85);
+    background: #232324 !important;
     color: #ffd580;
-    border-bottom: 1.5px solid #35363a;
+    border: none !important;
+    box-shadow: none !important;
   }
   body.dark-mode .emos-logo {
     color: #ffd580;
@@ -158,7 +166,14 @@ BASE_STYLE = '''
     max-width: 540px;
     margin: 0 auto;
     padding: 0 12px;
-    margin-top: 68px;
+    margin-top: 96px !important;
+    margin-bottom: 0 !important;
+  }
+  body.dark-mode .container {
+    margin-top: 96px;
+  }
+  body.dark-mode .emos-topbar {
+    border-bottom: none;
   }
   .card, .bubble {
     background: #fff;
@@ -191,6 +206,28 @@ BASE_STYLE = '''
     border-radius: 8px 0 0 0;
     transform: rotate(-45deg);
     z-index: 0;
+  }
+  body.dark-mode .bubble {
+    background: #35363a;
+    color: #f9f6f2;
+    border: 1.5px solid #ffd580;
+  }
+  body.dark-mode .bubble:before {
+    background: #35363a;
+    border-left: 1.5px solid #ffd580;
+    border-top: 1.5px solid #ffd580;
+  }
+  body.dark-mode .bubble a {
+    color: #ffd580;
+  }
+  body.dark-mode .bubble .wellness-score {
+    color: #ffd580;
+  }
+  body.dark-mode .bubble .risk-low {
+    color: #2ecc71;
+  }
+  body.dark-mode .bubble .risk-high {
+    color: #d7263d;
   }
   h2, h3 {
     color: #232324;
@@ -247,25 +284,36 @@ BASE_STYLE = '''
   .wellness-score { font-size: 1.2em; color: #ff9900; font-weight: 700; }
   a { color: #ff9900; text-decoration: none; font-weight: 600; }
   a:hover { text-decoration: underline; color: #ffb300; }
+  body.dark-mode .bubble,
+  body.dark-mode .bubble h3,
+  body.dark-mode .bubble p,
+  body.dark-mode .bubble ul,
+  body.dark-mode .bubble li,
+  body.dark-mode .bubble strong,
+  body.dark-mode .bubble b {
+    color: #f9f6f2 !important;
+  }
 </style>
 <script>
-function toggleDarkMode() {
-  document.body.classList.toggle('dark-mode');
-  let btn = document.getElementById('darkBtn');
-  if(document.body.classList.contains('dark-mode')) {
-    btn.innerHTML = '☀️';
+// Persist dark mode across page loads using localStorage
+function setDarkMode(enabled) {
+  if (enabled) {
+    document.body.classList.add('dark-mode');
+    localStorage.setItem('darkMode', '1');
+    document.getElementById('darkBtn').innerHTML = '☀️';
   } else {
-    btn.innerHTML = '🌙';
+    document.body.classList.remove('dark-mode');
+    localStorage.setItem('darkMode', '0');
+    document.getElementById('darkBtn').innerHTML = '🌙';
   }
+}
+function toggleDarkMode() {
+  setDarkMode(!document.body.classList.contains('dark-mode'));
 }
 window.onload = function() {
-  let btn = document.getElementById('darkBtn');
-  if(document.body.classList.contains('dark-mode')) {
-    btn.innerHTML = '☀️';
-  } else {
-    btn.innerHTML = '🌙';
-  }
-}
+  let dark = localStorage.getItem('darkMode');
+  setDarkMode(dark === '1');
+};
 </script>
 '''
 
@@ -274,7 +322,7 @@ HOME_HTML = '''
 <html><head><title>Mental Health Risk Prediction</title>{BASE_STYLE}</head><body>
 <div class="emos-topbar">
   <div class="emos-topbar-inner">
-    <span class="emos-logo">EmoS</span>
+    <a href="/" class="emos-logo" style="text-decoration:none; cursor:pointer;">EmoS</a>
     <div class="dark-toggle"><button id="darkBtn" class="toggle-btn" onclick="toggleDarkMode()">🌙</button></div>
   </div>
 </div>
@@ -310,7 +358,7 @@ RESULT_HTML = '''
 <html><head><title>Prediction Result</title>{BASE_STYLE}</head><body>
 <div class="emos-topbar">
   <div class="emos-topbar-inner">
-    <span class="emos-logo">EmoS</span>
+    <a href="/" class="emos-logo" style="text-decoration:none; cursor:pointer;">EmoS</a>
     <div class="dark-toggle"><button id="darkBtn" class="toggle-btn" onclick="toggleDarkMode()">🌙</button></div>
   </div>
 </div>
@@ -333,7 +381,7 @@ PHQ9_HTML = '''
 <html><head><title>PHQ-9 Depression Quiz</title>{BASE_STYLE}</head><body>
 <div class="emos-topbar">
   <div class="emos-topbar-inner">
-    <span class="emos-logo">EmoS</span>
+    <a href="/" class="emos-logo" style="text-decoration:none; cursor:pointer;">EmoS</a>
     <div class="dark-toggle"><button id="darkBtn" class="toggle-btn" onclick="toggleDarkMode()">🌙</button></div>
   </div>
 </div>
